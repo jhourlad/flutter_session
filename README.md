@@ -1,6 +1,6 @@
 # flutter_session
 
-Adds session support to Flutter. Works with mobile, web and (hopefully) desktop build.
+Adds session support to Flutter. Works with mobile, web and (hopefully) desktop builds.
 
 ### Write values to the session:
 ```sh

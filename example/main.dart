@@ -28,8 +28,6 @@ class Page2 extends StatelessWidget {
             future: FlutterSession().get('token'),
             builder: (context, snapshot) {
               return Text(snapshot.hasData ? snapshot.data : 'Loading...');
-            }
-        )
-    );
+            }));
   }
 }

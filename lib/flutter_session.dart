@@ -1,11 +1,18 @@
+/// Copyright (c) 2020, Jhourlad Estrella.
+/// All rights reserved. Use of this source code is governed by a
+/// MIT-style license that can be found in the LICENSE.md file.
+
+/// flutter_session file package.
+///
+/// Adds session-like functionality to Flutter
 library flutter_session;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-// Concession
-// A package that adds session functionality to Flutter
+/// flutter_session
+/// A package that adds session functionality to Flutter
 class FlutterSession {
-  // Initialize session container
+  /// Initialize session container
   Map _session = {};
 
   // Yes, it uses SharedPreferences
@@ -16,42 +23,54 @@ class FlutterSession {
     this.prefs = await SharedPreferences.getInstance();
   }
 
-  // Item getter
+  /// Item setter
+  ///
+  /// @param key String
+  /// @returns Future
   Future get(key) async {
     await _initSharedPrefs();
     return this.prefs.get(key);
   }
 
-  // Item setter
+  /// Item setter
+  ///
+  /// @param key String
+  /// @param value any
+  /// @returns Future
   Future set(key, value) async {
     await _initSharedPrefs();
 
-    // Detect item type
+    /// Detect item type
     switch (value.runtimeType) {
+      /// String
       case String:
         {
           this.prefs.setString(key, value);
         }
         break;
 
+      /// Integer
       case int:
         {
           this.prefs.setInt(key, value);
         }
         break;
 
+      /// Boolean
       case bool:
         {
           this.prefs.setBool(key, value);
         }
         break;
 
+      /// Double
       case double:
         {
           this.prefs.setDouble(key, value);
         }
         break;
 
+      /// List<String>
       case List:
         {
           this.prefs.setStringList(key, value);
