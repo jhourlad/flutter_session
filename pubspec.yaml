@@ -1,7 +1,7 @@
 name: flutter_session
-description: A simple session package for Flutter that works on both mobile, web and (hopefully) desktop apps.
+description: Adds session support to Flutter. Works with mobile, web and (hopefully) desktop builds.
 author: jhourlad<jhourlad01@gmail.com>
-version: 0.0.7
+version: 0.1.0
 homepage: https://github.com/jhourlad/flutter_session
 
 environment:

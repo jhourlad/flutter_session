@@ -1,5 +1,19 @@
-import 'package:flutter_session/flutter_session.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
+
+class Data {
+  final int id;
+  final String data;
+
+  Data({this.data, this.id});
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data["id"] = id;
+    data["data"] = this.data;
+    return data;
+  }
+}
 
 class Page1 extends StatelessWidget {
   @override
@@ -14,8 +28,9 @@ class Page1 extends StatelessWidget {
   }
 
   Future<void> saveData(context) async {
-    String token = 'The token you got from the API';
-    await FlutterSession().set('token', token);
+    Data myData = Data(data: "Lorem ipsum, something, something...", id: 1);
+
+    await FlutterSession().set('myData', myData);
     Navigator.push(context, MaterialPageRoute(builder: (_context) => Page2()));
   }
 }
@@ -25,9 +40,11 @@ class Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         child: FutureBuilder(
-            future: FlutterSession().get('token'),
+            future: FlutterSession().get('myData'),
             builder: (context, snapshot) {
-              return Text(snapshot.hasData ? snapshot.data : 'Loading...');
+              return Text(snapshot.hasData
+                  ? snapshot.data['id'].toString() + "|" + snapshot.data['data']
+                  : 'Loading...');
             }));
   }
 }

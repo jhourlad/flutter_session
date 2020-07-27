@@ -1,6 +1,7 @@
 # flutter_session
 
 Adds session support to Flutter. Works with mobile, web and (hopefully) desktop builds.
+(Don't forget to hit the  like button if you find the package helpful.)
 
 ### Write values to the session:
 ```sh
@@ -22,3 +23,4 @@ dynamic token = await FlutterSession().get("token");
 ```
 
 Session persists throughout the app's lifetime.
+(Don't forget to hit the  like button if you find the package helpful.)
