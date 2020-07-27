@@ -17,7 +17,7 @@ await session.set("price", 10.50);
 await session.set("isOK", true);
 ```
 
-Saving objects, make sure that it has the toJson() method:
+Saving objects, make sure that it has the toJson() method. See https://ashamp.github.io/jsonToDartModel:
 
 ``` 
 class Data {
