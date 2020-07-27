@@ -3,3 +3,6 @@
 
 ## [0.1.0] - 2020-07-27
 * Add object support
+
+## [0.1.1] - 2020-07-27
+* Updated example

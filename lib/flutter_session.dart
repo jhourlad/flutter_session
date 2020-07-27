@@ -31,9 +31,9 @@ class FlutterSession {
   /// @returns Future
   Future get(key) async {
     await _initSharedPrefs();
-    try{
+    try {
       return json.decode(this.prefs.get(key));
-    } catch(e) {
+    } catch (e) {
       return this.prefs.get(key);
     }
   }
@@ -46,47 +46,48 @@ class FlutterSession {
   Future set(key, value) async {
     await _initSharedPrefs();
 
-    /// Detect item type
+    // Detect item type
     switch (value.runtimeType) {
-    /// String
+      // String
       case String:
         {
           this.prefs.setString(key, value);
         }
         break;
 
-    /// Integer
+      // Integer
       case int:
         {
           this.prefs.setInt(key, value);
         }
         break;
 
-    /// Boolean
+      // Boolean
       case bool:
         {
           this.prefs.setBool(key, value);
         }
         break;
 
-    /// Double
+      // Double
       case double:
         {
           this.prefs.setDouble(key, value);
         }
         break;
 
-    /// List<String>
+      // List<String>
       case List:
         {
           this.prefs.setStringList(key, value);
         }
         break;
 
-    /// Object
-      default: {
-        this.prefs.setString(key, jsonEncode(value.toJson()));
-      }
+      // Object
+      default:
+        {
+          this.prefs.setString(key, jsonEncode(value.toJson()));
+        }
     }
 
     // Add item to session container
