@@ -25,6 +25,15 @@ class FlutterSession {
     this.prefs = await SharedPreferences.getInstance();
   }
 
+  /// Item remove
+  ///
+  /// @param key String
+  /// @returns Future
+  Future remove(key) async{
+    await _initSharedPrefs();
+    return this.prefs.remove(key);
+  }
+
   /// Item setter
   ///
   /// @param key String
