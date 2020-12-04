@@ -34,6 +34,14 @@ class FlutterSession {
     return this.prefs.remove(key);
   }
 
+  /// Session cleaner
+  ///
+  /// @returns Future
+  Future clear() async{
+    await _initSharedPrefs();
+    return this.prefs.clear();
+  }
+
   /// Item setter
   ///
   /// @param key String
