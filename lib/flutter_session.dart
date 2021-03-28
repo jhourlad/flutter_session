@@ -25,7 +25,7 @@ class FlutterSession {
     this.prefs = await SharedPreferences.getInstance();
   }
 
-  /// Item setter
+  /// Item getter
   ///
   /// @param key String
   /// @returns Future
