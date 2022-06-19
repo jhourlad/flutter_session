@@ -5,7 +5,7 @@ class Data {
   final int id;
   final String data;
 
-  Data({this.data, this.id});
+  Data({required this.data, required this.id});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
@@ -43,7 +43,7 @@ class Page2 extends StatelessWidget {
             future: FlutterSession().get('myData'),
             builder: (context, snapshot) {
               return Text(snapshot.hasData
-                  ? snapshot.data['id'].toString() + "|" + snapshot.data['data']
+                  ? "${(snapshot.data as Map)['id'] ?? ""}| ${(snapshot.data as Map)['data']}"
                   : 'Loading...');
             }));
   }
