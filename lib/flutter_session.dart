@@ -15,14 +15,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// A package that adds session functionality to Flutter
 class FlutterSession {
   /// Initialize session container
-  Map _session = {};
+  final Map _session = {};
 
   // Yes, it uses SharedPreferences
-  SharedPreferences prefs;
+  late SharedPreferences prefs;
 
   // Initialize the SharedPreferences instance
   Future _initSharedPrefs() async {
-    this.prefs = await SharedPreferences.getInstance();
+    prefs = await SharedPreferences.getInstance();
   }
 
   /// Item setter
@@ -32,9 +32,9 @@ class FlutterSession {
   Future get(key) async {
     await _initSharedPrefs();
     try {
-      return json.decode(this.prefs.get(key));
+      return json.decode(prefs.getString(key) ?? "");
     } catch (e) {
-      return this.prefs.get(key);
+      return prefs.get(key);
     }
   }
 
@@ -48,49 +48,49 @@ class FlutterSession {
 
     // Detect item type
     switch (value.runtimeType) {
-      // String
+    // String
       case String:
         {
-          this.prefs.setString(key, value);
+          prefs.setString(key, value);
         }
         break;
 
-      // Integer
+    // Integer
       case int:
         {
-          this.prefs.setInt(key, value);
+          prefs.setInt(key, value);
         }
         break;
 
-      // Boolean
+    // Boolean
       case bool:
         {
-          this.prefs.setBool(key, value);
+          prefs.setBool(key, value);
         }
         break;
 
-      // Double
+    // Double
       case double:
         {
-          this.prefs.setDouble(key, value);
+          prefs.setDouble(key, value);
         }
         break;
 
-      // List<String>
+    // List<String>
       case List:
         {
-          this.prefs.setStringList(key, value);
+          prefs.setStringList(key, value);
         }
         break;
 
-      // Object
+    // Object
       default:
         {
-          this.prefs.setString(key, jsonEncode(value.toJson()));
+          prefs.setString(key, jsonEncode(value.toJson()));
         }
     }
 
     // Add item to session container
-    this._session.putIfAbsent(key, () => value);
+    _session.putIfAbsent(key, () => value);
   }
 }
